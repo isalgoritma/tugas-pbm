@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../models/product_model.dart';
 import '../services/product_service.dart';
 import 'tambahproduct_screen.dart';
+// ignore: unused_import
+import 'submit_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -67,6 +69,42 @@ class _HomeScreenState
             fontSize: 28,
           ),
         ),
+
+        actions: [
+
+          Padding(
+
+            padding:
+                const EdgeInsets.only(
+              right: 12,
+            ),
+
+            child: IconButton(
+
+              onPressed: () {
+
+                Navigator.push(
+
+                  context,
+
+                  MaterialPageRoute(
+
+                    builder: (context) =>
+                        const SubmitScreen(),
+                  ),
+                );
+              },
+
+              icon: const Icon(
+
+                Icons.send_rounded,
+
+                color:
+                    Color(0xff3C2A21),
+              ),
+            ),
+          )
+        ],
       ),
 
       floatingActionButton:

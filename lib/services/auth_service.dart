@@ -32,7 +32,6 @@ class AuthService {
 
       String token = data['data']['token'];
 
-      // simpan token
       await storage.write(
         key: 'token',
         value: token,

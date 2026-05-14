@@ -212,4 +212,71 @@ class ProductService {
       return false;
     }
   }
+
+  Future<bool> submitTask(
+
+    String name,
+    int price,
+    String description,
+    String githubUrl,
+
+  ) async {
+
+    try {
+
+      String? token =
+          await storage.read(
+        key: 'token',
+      );
+
+      final url = Uri.parse(
+        '$baseUrl/api/products/submit',
+      );
+
+      final response =
+          await http.post(
+
+        url,
+
+        headers: {
+
+          'Authorization':
+              'Bearer $token',
+
+          'Content-Type':
+              'application/json',
+
+          'Accept':
+              'application/json',
+        },
+
+        body: jsonEncode({
+
+          'name': name,
+
+          'price': price,
+
+          'description': description,
+
+          'github_url': githubUrl,
+        }),
+      );
+
+      // ignore: avoid_print
+      print(response.body);
+
+      return response.statusCode ==
+              200 ||
+          response.statusCode ==
+              201;
+
+    } catch (e) {
+
+      // ignore: avoid_print
+      print(e);
+
+      return false;
+    }
+  }
+
 }
